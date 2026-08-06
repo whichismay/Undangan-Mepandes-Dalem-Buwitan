@@ -10,44 +10,44 @@ const DEFAULT_INVITATION_DATA: InvitationData = {
   initiates: [
     {
       id: "1",
-      name: "Ni Wayan Ryas Ganitri",
-      title: "I Made Oka Santiaga & Ni Wayan Sukartini",
+      name: "Ni Wayan Ryas Ganitri, S.Tr.Tra.",
+      title: "Bapak I Made Oka Santiaga, SE.,M.M & Ibu Ni Wayan Sukartini",
       description: ""
     },
     {
       id: "2",
-      name: "Ni Wayan Ella Ermayani",
-      title: "I Nyoman Alit Suryamanik & Ni Ketut Puspanadi",
+      name: "Ni Wayan Ella Ermayani, A.Md.T",
+      title: "Bapak I Nyoman Alit Suryamanik, S.H & Ibu Ni Ketut Puspanadi, S.TP",
       description: ""
     },
     {
       id: "3",
       name: "Ni Made Vira Gayatri",
-      title: "I Made Oka Santiaga & Ni Wayan Sukartini",
+      title: "Bapak I Made Oka Santiaga, SE.,M.M & Ibu Ni Wayan Sukartini",
       description: ""
     },
     {
       id: "4",
       name: "I Made Jyestha Cahyadiguna",
-      title: "I Nyoman Alit Suryamanik & Ni Ketut Puspanadi",
+      title: "Bapak I Nyoman Alit Suryamanik, S.H & Ibu Ni Ketut Puspanadi, S.TP",
       description: ""
     },
     {
       id: "5",
       name: "Ni Komang Risna Gianitri",
-      title: "I Made Oka Santiaga & Ni Wayan Sukartini",
+      title: "Bapak I Made Oka Santiaga, SE.,M.M & Ibu Ni Wayan Sukartini",
       description: ""
     },
     {
       id: "6",
       name: "Ni Wayan Kusumawati",
-      title: "I Wayan Sentana Putra & Ni Ketut Mustini",
+      title: "Bapak I Wayan Sentana Putra, SE.,M.Si & Ibu Ni Ketut Mustini, S.E",
       description: ""
     },
     {
       id: "7",
       name: "Ni Ketut Emma Dharmaning Putri",
-      title: "I Nyoman Alit Suryamanik & Ni Ketut Puspanadi",
+      title: "Bapak I Nyoman Alit Suryamanik, S.H & Ibu Ni Ketut Puspanadi, S.TP",
       description: ""
     }
   ],
@@ -77,6 +77,7 @@ export default function App() {
         const parsed = JSON.parse(saved);
         return {
           ...parsed,
+          rsvpList: [], // Always empty initially until Firestore syncs live wishes
           event: {
             ...parsed.event,
             balineseDate: DEFAULT_INVITATION_DATA.event.balineseDate,

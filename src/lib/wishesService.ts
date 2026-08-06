@@ -1,64 +1,54 @@
-import { collection, onSnapshot, addDoc } from "firebase/firestore";
+import { collection, onSnapshot, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "./firebase";
 import { RSVP } from "../types";
 
-let isSeeding = false;
+// Cutoff timestamp for production launch (August 6, 2026 / launch time)
+const LAUNCH_TIMESTAMP = Date.now();
+let isCleanedUp = false;
 
 export function subscribeToWishes(callback: (wishes: RSVP[]) => void) {
   try {
     const wishesRef = collection(db, "wishes");
 
+    // Clean up all old test wishes from Firestore DB for official launch
+    if (!isCleanedUp) {
+      isCleanedUp = true;
+      getDocs(wishesRef)
+        .then((snapshot) => {
+          snapshot.docs.forEach((d) => {
+            const data = d.data();
+            const createdAtTime = data.createdAt ? new Date(data.createdAt).getTime() : 0;
+            // Delete all test data created before official launch timestamp
+            if (createdAtTime < LAUNCH_TIMESTAMP) {
+              deleteDoc(doc(db, "wishes", d.id)).catch(() => {});
+            }
+          });
+        })
+        .catch((err) => console.error("Error clearing test wishes:", err));
+    }
+
     return onSnapshot(
       wishesRef,
       (snapshot) => {
-        if (snapshot.docs.length === 0 && !isSeeding) {
-          isSeeding = true;
-          // Seed initial sample wishes into Firestore so all visitors see initial samples
-          const defaultWishes = [
-            {
-              name: "Gede Arta & Keluarga",
-              relationship: "Semeton / Keluarga",
-              status: "hadir",
-              message: "Om Swastyastu, selamat atas upacara Mepandes / Metatah semeton Keluarga Besar Dalem Buwitan. Dumogi memargi labda karya lan rahayu.",
-              createdAt: new Date().toISOString()
-            },
-            {
-              name: "Made & Ketut",
-              relationship: "Kerabat / Sahabat",
-              status: "hadir",
-              message: "Selamat lan suksema atas terselenggaranya Yadnya Mepandes. Mogi memargi ancar lan selalu dicipati Kerahayuan.",
-              createdAt: new Date(Date.now() - 3600000).toISOString()
-            }
-          ];
-          
-          // Show default wishes immediately in UI while seeding
-          callback(defaultWishes.map((w, idx) => ({
-            id: `seed-${idx}`,
-            name: w.name,
-            relationship: w.relationship,
-            status: w.status as "hadir" | "absen",
-            message: w.message,
-            timestamp: w.createdAt
-          })));
-
-          Promise.all(defaultWishes.map((w) => addDoc(wishesRef, w)))
-            .catch((err) => console.error("Error seeding initial wishes:", err))
-            .finally(() => { isSeeding = false; });
-          return;
-        }
-
-        const wishes: RSVP[] = snapshot.docs.map((doc) => {
-          const data = doc.data();
-          const statusVal: "hadir" | "absen" = data.status === "absen" ? "absen" : "hadir";
-          return {
-            id: doc.id,
-            name: data.name || "Semeton",
-            relationship: data.relationship || data.attendance || "Semeton",
-            status: statusVal,
-            message: data.message || "",
-            timestamp: data.createdAt || data.timestamp || new Date().toISOString()
-          };
-        });
+        const wishes: RSVP[] = snapshot.docs
+          .filter((docSnap) => {
+            const data = docSnap.data();
+            const createdAtTime = data.createdAt ? new Date(data.createdAt).getTime() : 0;
+            // Filter out any test wishes created before launch
+            return createdAtTime >= LAUNCH_TIMESTAMP;
+          })
+          .map((docSnap) => {
+            const data = docSnap.data();
+            const statusVal: "hadir" | "absen" = data.status === "absen" ? "absen" : "hadir";
+            return {
+              id: docSnap.id,
+              name: data.name || "Semeton",
+              relationship: data.relationship || data.attendance || "Semeton",
+              status: statusVal,
+              message: data.message || "",
+              timestamp: data.createdAt || data.timestamp || new Date().toISOString()
+            };
+          });
 
         // Sort descending by timestamp (newest first)
         wishes.sort((a, b) => {

@@ -249,7 +249,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 text-left w-full mx-auto">
-            {/* Family 1 (I Wayan Sentana Putra) */}
+            {/* Family 1 (Bapak I Wayan Sentana Putra, SE.,M.Si & Ibu Ni Ketut Mustini, S.E) */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -259,7 +259,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
             >
               <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#d8c49e]/60">
                 <span className="text-[10px] uppercase font-sans tracking-wider text-[#8d8e7c] font-bold block">
-                  Anak alit saking I Wayan Sentana Putra & Ni Ketut Mustini:
+                  Anak alit saking Bapak I Wayan Sentana Putra, SE.,M.Si & Ibu Ni Ketut Mustini, S.E:
                 </span>
               </div>
               <div className="space-y-3">
@@ -277,7 +277,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
               </div>
             </motion.div>
 
-            {/* Family 2 (I Made Oka Santiaga) */}
+            {/* Family 2 (Bapak I Made Oka Santiaga, SE.,M.M & Ibu Ni Wayan Sukartini) */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -287,7 +287,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
             >
               <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#d8c49e]/60">
                 <span className="text-[10px] uppercase font-sans tracking-wider text-[#8d8e7c] font-bold block">
-                  Anak alit saking I Made Oka Santiaga & Ni Wayan Sukartini:
+                  Anak alit saking Bapak I Made Oka Santiaga, SE.,M.M & Ibu Ni Wayan Sukartini:
                 </span>
               </div>
               <div className="space-y-3">
@@ -295,7 +295,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                   <div className="flex items-center gap-2">
                     <span className="text-[#c5a059] text-xs">✦</span>
                     <p className="text-base sm:text-lg md:text-xl font-serif-royal font-bold text-[#676a57] tracking-wide leading-snug">
-                      Ni Wayan Ryas Ganitri
+                      Ni Wayan Ryas Ganitri, S.Tr.Tra.
                     </p>
                   </div>
                   <span className="text-[#8d8e7c] text-xs font-normal pl-5 block mt-0.5 antialiased" title="Aksara Bali: Ni Wayan Ryas Ganitri">
@@ -329,7 +329,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
               </div>
             </motion.div>
 
-            {/* Family 3 (I Nyoman Alit Suryamanik) */}
+            {/* Family 3 (Bapak I Nyoman Alit Suryamanik, S.H & Ibu Ni Ketut Puspanadi, S.TP) */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -339,7 +339,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
             >
               <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#d8c49e]/60">
                 <span className="text-[10px] uppercase font-sans tracking-wider text-[#8d8e7c] font-bold block">
-                  Anak alit saking I Nyoman Alit Suryamanik & Ni Ketut Puspanadi:
+                  Anak alit saking Bapak I Nyoman Alit Suryamanik, S.H & Ibu Ni Ketut Puspanadi, S.TP:
                 </span>
               </div>
               <div className="space-y-3">
@@ -347,7 +347,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                   <div className="flex items-center gap-2">
                     <span className="text-[#c5a059] text-xs">✦</span>
                     <p className="text-base sm:text-lg md:text-xl font-serif-royal font-bold text-[#676a57] tracking-wide leading-snug">
-                      Ni Wayan Ella Ermayani
+                      Ni Wayan Ella Ermayani, A.Md.T
                     </p>
                   </div>
                   <span className="text-[#8d8e7c] text-xs font-normal pl-5 block mt-0.5 antialiased" title="Aksara Bali: Ni Wayan Ella Ermayani">
@@ -607,7 +607,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                 type="text"
                 value={guestName}
                 onChange={(e) => setGuestName(e.target.value)}
-                placeholder="Contoh: Ella & Sekeluarga"
+                placeholder="Contoh: Ella"
                 className="w-full px-4 py-2.5 rounded-xl border border-[#d8c49e] bg-white text-sm font-semibold text-[#676a57] focus:outline-none focus:ring-2 focus:ring-[#d8c49e]"
               />
             </div>
@@ -681,7 +681,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                   setMessage(e.target.value);
                   setSelectedTemplate(null);
                 }}
-                placeholder="Ketik ucapan & doa pangastawa terbaik Anda di sini..."
+                placeholder="Ketik ucapan & doa di sini..."
                 className="w-full px-4 py-3 rounded-xl border-2 border-[#d8c49e] bg-white text-xs font-semibold text-[#676a57] focus:outline-none focus:ring-2 focus:ring-[#676a57]/30 shadow-xs"
               />
 
@@ -770,7 +770,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
             {/* Wishes Cards */}
             {(!data.rsvpList || data.rsvpList.length === 0) ? (
               <div className="p-6 rounded-2xl bg-[#f8f4ea]/60 border border-dashed border-[#d8c49e] text-center text-xs text-[#8d8e7c]">
-                Belum ada ucapan. Jadilah yang pertama memberikan doa &amp; pangastawa! 🙏
+                Belum ada ucapan
               </div>
             ) : (
               <div className="max-h-[520px] overflow-y-auto space-y-3 pr-1.5 py-1 custom-scrollbar">
@@ -852,10 +852,6 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
             </p>
           </div>
         </motion.div>
-
-        <p className="text-[9px] text-center text-[#8d8e7c] tracking-widest uppercase font-mono pb-4">
-          © 2026 Yadnya Mepandes Digital Invitation • Bali
-        </p>
       </div>
     </div>
   );
