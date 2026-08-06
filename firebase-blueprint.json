@@ -1,0 +1,16 @@
+{
+  "entities": {
+    "wishes": {
+      "title": "Wishes",
+      "description": "Ucapan & Doa dari para tamu",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "attendance": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "attendance", "message", "createdAt"]
+    }
+  }
+}

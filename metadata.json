@@ -1,0 +1,6 @@
+{
+  "name": "Undangan Mepandes",
+  "description": "Website undangan digital upacara Yadnya Mepandes / Metatah adat Bali menggunakan Bahasa Bali Alus yang elegan dan interaktif.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

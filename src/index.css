@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Pinyon+Script&family=Alex+Brush&family=Satisfy&family=Marck+Script&family=Dancing+Script&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Qaskin';
+  src: url('/fonts/QaskinBlack_PersonalUse.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-serif-royal: "Cinzel", Georgia, serif;
+  --font-serif-elegant: "Playfair Display", Georgia, serif;
+  --font-signature: "Qaskin", "Satisfy", "Marck Script", "Dancing Script", cursive;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-gold-light: #f6e0a4;
+  --color-gold-medium: #dfb24c;
+  --color-gold-dark: #b8860b;
+  --color-sacred-white: #fdfbf7;
+
+  /* User Custom Palette */
+  --color-sage-dark: #676a57;
+  --color-sage-medium: #8d8e7c;
+  --color-dusty-pink: #eebebc;
+  --color-blush-soft: #fee4e3;
+}
+
+.bg-sage-dark {
+  background-color: #676a57;
+}
+
+.bg-sage-medium {
+  background-color: #8d8e7c;
+}
+
+.bg-dusty-pink {
+  background-color: #eebebc;
+}
+
+.bg-blush-soft {
+  background-color: #fee4e3;
+}
+
+.text-sage-dark {
+  color: #676a57;
+}
+
+.text-sage-medium {
+  color: #8d8e7c;
+}
+
+.text-dusty-pink {
+  color: #eebebc;
+}
+
+.border-sage-dark {
+  border-color: #676a57;
+}
+
+.border-sage-medium {
+  border-color: #8d8e7c;
+}
+
+.border-dusty-pink {
+  border-color: #eebebc;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 4s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(223, 178, 76, 0.5);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 134, 11, 0.7);
+}
+
+/* Custom CSS Balinese songket pattern generator using SVG */
+.bg-songket-pattern-dark {
+  background-color: #311d0e; /* Much warmer, brighter rich Balinese wood-gilded base */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40 Z' fill='none' stroke='%23dfb24c' stroke-width='0.4' stroke-opacity='0.15'/%3E%3Cpath d='M40 10 L70 40 L40 70 L10 40 Z' fill='none' stroke='%23f6e0a4' stroke-width='0.2' stroke-opacity='0.1'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23dfb24c' fill-opacity='0.2'/%3E%3Cpolygon points='40,30 45,40 40,50 35,40' fill='%23dfb24c' fill-opacity='0.08'/%3E%3C/svg%3E");
+}
+
+.bg-songket-pattern-light {
+  background-color: #FCFAF5; /* Sacred off-white base */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40 Z' fill='none' stroke='%23b8860b' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cpath d='M40 10 L70 40 L40 70 L10 40 Z' fill='none' stroke='%23dfb24c' stroke-width='0.2' stroke-opacity='0.05'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23dfb24c' fill-opacity='0.1'/%3E%3C/svg%3E");
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #f6e0a4 0%, #dfb24c 50%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #dfb24c;
+}
+
+.gold-border-glow {
+  border: 1px solid rgba(223, 178, 76, 0.3);
+  box-shadow: 0 0 15px rgba(223, 178, 76, 0.15);
+}
+
+.gold-border-glow-heavy {
+  border: 2px solid rgba(223, 178, 76, 0.6);
+  box-shadow: 0 0 25px rgba(223, 178, 76, 0.3);
+}
