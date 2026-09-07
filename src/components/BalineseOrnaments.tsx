@@ -956,4 +956,139 @@ export function FloatingKambojaFlowers() {
   );
 }
 
+/**
+ * Doodle Teratai (Lotus) Balinese Vector SVG
+ */
+export function DoodleTerataiFlower({ className = "w-10 h-10" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={`${className} filter drop-shadow-[0_2px_8px_rgba(216,196,158,0.5)]`} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="teratai-grad" cx="50%" cy="60%" r="55%">
+          <stop offset="0%" stopColor="#FFFDF9" />
+          <stop offset="50%" stopColor="#F5EEDC" />
+          <stop offset="85%" stopColor="#E2D0AF" />
+          <stop offset="100%" stopColor="#C5A059" />
+        </radialGradient>
+        <radialGradient id="teratai-center" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#FBBF24" />
+          <stop offset="100%" stopColor="#D97706" />
+        </radialGradient>
+      </defs>
+
+      {/* Outer Lotus Petals */}
+      <path d="M50 85 C30 85 10 70 15 50 C20 35 40 45 50 85 Z" fill="url(#teratai-grad)" stroke="#8C6C2E" strokeWidth="1.2" />
+      <path d="M50 85 C70 85 90 70 85 50 C80 35 60 45 50 85 Z" fill="url(#teratai-grad)" stroke="#8C6C2E" strokeWidth="1.2" />
+      
+      {/* Mid Petals */}
+      <path d="M50 82 C25 72 15 45 28 32 C38 25 46 45 50 82 Z" fill="url(#teratai-grad)" stroke="#8C6C2E" strokeWidth="1.2" />
+      <path d="M50 82 C75 72 85 45 72 32 C62 25 54 45 50 82 Z" fill="url(#teratai-grad)" stroke="#8C6C2E" strokeWidth="1.2" />
+
+      {/* Inner Petals */}
+      <path d="M50 80 C32 60 25 30 40 18 C48 12 49 35 50 80 Z" fill="url(#teratai-grad)" stroke="#8C6C2E" strokeWidth="1.2" />
+      <path d="M50 80 C68 60 75 30 60 18 C52 12 51 35 50 80 Z" fill="url(#teratai-grad)" stroke="#8C6C2E" strokeWidth="1.2" />
+
+      {/* Center Crown Petal */}
+      <path d="M50 78 C42 50 42 20 50 10 C58 20 58 50 50 78 Z" fill="#FFFDF9" stroke="#8C6C2E" strokeWidth="1.5" />
+
+      {/* Golden Stamen Dots */}
+      <circle cx="50" cy="55" r="7" fill="url(#teratai-center)" />
+      <circle cx="45" cy="52" r="1.5" fill="#FFF" />
+      <circle cx="55" cy="52" r="1.5" fill="#FFF" />
+      <circle cx="50" cy="48" r="1.5" fill="#FFF" />
+    </svg>
+  );
+}
+
+/**
+ * Doodle Kamboja (Frangipani) Balinese Vector SVG
+ */
+export function DoodleKambojaFlower({ className = "w-10 h-10" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={`${className} filter drop-shadow-[0_2px_8px_rgba(216,196,158,0.5)]`} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="doodle-kamboja-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#FFFDF9" />
+          <stop offset="60%" stopColor="#F9F3E5" />
+          <stop offset="100%" stopColor="#E2CFA8" />
+        </radialGradient>
+        <radialGradient id="doodle-kamboja-center" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#F59E0B" />
+          <stop offset="80%" stopColor="#D97706" />
+        </radialGradient>
+      </defs>
+
+      {/* 5 Overlapping Petals with doodle stroke */}
+      <g stroke="#8C6C2E" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M50 50 C38 22, 62 18, 50 8 C62 20, 62 38, 50 50 Z" fill="url(#doodle-kamboja-grad)" />
+        <path d="M50 50 C38 22, 62 18, 50 8 C62 20, 62 38, 50 50 Z" fill="url(#doodle-kamboja-grad)" transform="rotate(72, 50, 50)" />
+        <path d="M50 50 C38 22, 62 18, 50 8 C62 20, 62 38, 50 50 Z" fill="url(#doodle-kamboja-grad)" transform="rotate(144, 50, 50)" />
+        <path d="M50 50 C38 22, 62 18, 50 8 C62 20, 62 38, 50 50 Z" fill="url(#doodle-kamboja-grad)" transform="rotate(216, 50, 50)" />
+        <path d="M50 50 C38 22, 62 18, 50 8 C62 20, 62 38, 50 50 Z" fill="url(#doodle-kamboja-grad)" transform="rotate(288, 50, 50)" />
+      </g>
+
+      {/* Warm Golden Center */}
+      <circle cx="50" cy="50" r="12" fill="url(#doodle-kamboja-center)" />
+      <circle cx="50" cy="50" r="5" fill="#FBBF24" />
+    </svg>
+  );
+}
+
+/**
+ * Reusable Bouncy Spring Floral Pop-out decorator component
+ */
+export function BouncyFloralDecorator({
+  flowerType = "teratai",
+  sizeClass = "w-10 h-10 sm:w-12 sm:h-12",
+  delay = 0,
+  className = ""
+}: {
+  flowerType?: "teratai" | "kamboja" | "kamboja-pink" | "kamboja-yellow";
+  sizeClass?: string;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0, rotate: -25 }}
+      whileInView={{
+        opacity: 1,
+        scale: 1,
+        rotate: 0
+      }}
+      viewport={{ once: false, margin: "-30px" }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 11,
+        mass: 0.8,
+        delay
+      }}
+      className={`inline-block pointer-events-none drop-shadow-md ${className}`}
+    >
+      <motion.div
+        animate={{
+          rotate: [-3, 3, -3],
+          y: [-2, 2, -2]
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        {flowerType === "teratai" ? (
+          <DoodleTerataiFlower className={sizeClass} />
+        ) : flowerType === "kamboja-pink" ? (
+          <PinkKambojaFlower className={sizeClass} />
+        ) : flowerType === "kamboja-yellow" ? (
+          <YellowKambojaFlower className={sizeClass} />
+        ) : (
+          <DoodleKambojaFlower className={sizeClass} />
+        )}
+      </motion.div>
+    </motion.div>
+  );
+}
+
+
 

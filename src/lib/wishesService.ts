@@ -2,15 +2,16 @@ import { collection, onSnapshot, addDoc, getDocs, deleteDoc, doc } from "firebas
 import { db } from "./firebase";
 import { RSVP } from "../types";
 
-// Cutoff timestamp for production launch (August 6, 2026 / launch time)
-const LAUNCH_TIMESTAMP = Date.now();
+// Fixed cutoff timestamp for test cleanup (August 6, 2026 08:00 UTC)
+const TEST_CLEANUP_CUTOFF = 1785980000000;
+const TEST_NAMES = ["Gede Arta & Keluarga", "Made & Ketut", "Ella", "Kak Elaa", "Mang Alitz Squad"];
 let isCleanedUp = false;
 
 export function subscribeToWishes(callback: (wishes: RSVP[]) => void) {
   try {
     const wishesRef = collection(db, "wishes");
 
-    // Clean up all old test wishes from Firestore DB for official launch
+    // Clean up test wishes created during development/testing
     if (!isCleanedUp) {
       isCleanedUp = true;
       getDocs(wishesRef)
@@ -18,8 +19,8 @@ export function subscribeToWishes(callback: (wishes: RSVP[]) => void) {
           snapshot.docs.forEach((d) => {
             const data = d.data();
             const createdAtTime = data.createdAt ? new Date(data.createdAt).getTime() : 0;
-            // Delete all test data created before official launch timestamp
-            if (createdAtTime < LAUNCH_TIMESTAMP) {
+            // Delete test entries created before launch cutoff or matching test names
+            if (TEST_NAMES.includes(data.name) || (createdAtTime > 0 && createdAtTime < TEST_CLEANUP_CUTOFF)) {
               deleteDoc(doc(db, "wishes", d.id)).catch(() => {});
             }
           });
@@ -34,8 +35,9 @@ export function subscribeToWishes(callback: (wishes: RSVP[]) => void) {
           .filter((docSnap) => {
             const data = docSnap.data();
             const createdAtTime = data.createdAt ? new Date(data.createdAt).getTime() : 0;
-            // Filter out any test wishes created before launch
-            return createdAtTime >= LAUNCH_TIMESTAMP;
+            if (TEST_NAMES.includes(data.name)) return false;
+            if (createdAtTime > 0 && createdAtTime < TEST_CLEANUP_CUTOFF) return false;
+            return true;
           })
           .map((docSnap) => {
             const data = docSnap.data();

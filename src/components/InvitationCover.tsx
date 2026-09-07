@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Mail, Calendar, MapPin, Edit3, Share2, Copy, Check, X, Send } from "lucide-react";
 import { InvitationData } from "../types";
-import { PinkKambojaFlower, YellowKambojaFlower, BalineseDivider, BalineseMeruSilhouette } from "./BalineseOrnaments";
+import { BalineseDivider, BalineseMeruSilhouette } from "./BalineseOrnaments";
 
 interface InvitationCoverProps {
   data: InvitationData;
@@ -80,24 +80,25 @@ export default function InvitationCover({
 Kepada Yth.
 *${recipientName}*
 
-Atas asung kertha wara nugraha Ida Sang Hyang Widhi Wasa, kami bermaksud menyelenggarakan Upacara Manusa Yadnya Mepandes (Metatah) Keluarga Dalem Buwitan yang, astungkara, akan dilaksanakan pada:
+Tanpa mengurangi rasa hormat, atas asung kertha wara nugraha Ida Sang Hyang Widhi Wasa, perkenankan kami mengundang Bapak/Ibu/Saudara/i, kerabat, serta sahabat terkasih untuk menghadiri Upacara Manusa Yadnya Mepandes (Potong Gigi) kami, yang astungkara akan dilaksanakan pada:
 
 📅 *Selasa, 13 Oktober 2026*
-⏰ *15.00 WITA*
-📍 *Dalem Buwitan, Denpasar Utara*
+⏰ *12.00 WITA - Selesai*
+📍 *Jl. A. Yani Utara, Br. Batur Peguyangan Kaja, Gang Buwitan, Denpasar Utara*
+🗺️ *Google Maps:* https://maps.app.goo.gl/KwLwqymGeU54EsfF6
 
 Mengenai detail rangkaian acara & lokasi dapat diakses melalui tautan digital berikut:
 ${link}
 
-*Nunas pangastawa lan kerawuhan semeton sami.*
-Merupakan suatu kebahagiaan serta kehormatan yang sangat besar bagi kami sekeluarga apabila Bapak/Ibu/Saudara/i berkenan hadir menyaksikan dan membebanan pangastami (doa keselamatan) demi kelancaran karya Manusa Yadnya puniki.
+*Doa restu dan kehadiran Bapak/Ibu/Saudara/i sangat kami harapkan.*
+Merupakan suatu kebahagiaan serta kehormatan bagi kami sekeluarga apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu demi kelancaran upacara ini.
 
-*Nunas ampura perihal penyampaian undangan yang hanya disampaikan melalui pesan digital ini.* Suksma atas perhatian lan kerawuhan semeton sami.
+*Mohon maaf yang sebesar-besarnya apabila undangan ini hanya dapat kami sampaikan melalui pesan digital ini.* Terima kasih banyak atas perhatian, doa restu, dan kehadirannya.
 
 Om Shanti, Shanti, Shanti Om.
 
 Salam Hormat,
-*Keluarga Dalem Buwitan*`;
+*Keluarga Besar Dalem Buwitan*`;
   };
 
   const handleShareWhatsApp = () => {
@@ -129,26 +130,26 @@ Salam Hormat,
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-xl text-center px-5 sm:px-10 py-8 sm:py-10 rounded-3xl max-h-[92vh] overflow-y-auto bg-gradient-to-b from-[#FFFFFF]/95 via-[#FAF8F5]/95 to-[#F6F3EB]/95 backdrop-blur-md border border-[#e2d8cd] shadow-xl shadow-[#676a57]/5 text-[#676a57] transition-all duration-700 relative overflow-hidden"
+        className="relative z-10 w-full max-w-xl text-center px-4 sm:px-10 py-7 sm:py-10 rounded-3xl max-h-[92vh] overflow-y-auto bg-gradient-to-b from-[#FFFFFF]/95 via-[#FAF8F5]/95 to-[#F6F3EB]/95 backdrop-blur-md border border-[#e2d8cd] shadow-xl shadow-[#676a57]/5 text-[#676a57] transition-all duration-700 relative overflow-hidden"
       >
         {/* Swastiastu Header Symbol (triple tap for host override) */}
         <div 
-          className="mb-3 flex flex-col items-center justify-center gap-1 cursor-pointer"
+          className="mb-3 flex flex-col items-center justify-center gap-1 cursor-pointer py-1"
           onClick={handleTopFlowersTap}
           title="Klik 3x untuk membuka Link Generator"
         >
-          <span className="text-[#676a57] text-lg sm:text-2xl font-normal tracking-normal mb-0.5 select-all antialiased opacity-90" title="Aksara Bali: Om Swastyastu">
+          <span className="text-[#676a57] text-lg sm:text-2xl font-normal tracking-normal mb-0.5 select-all antialiased opacity-90 leading-relaxed" title="Aksara Bali: Om Swastyastu">
             ᬑᬁ ᬲ᭄ᬯᬲ᭄ᬢ᭄ᬬᬲ᭄ᬢᬸ
           </span>
           <span className="text-[11px] sm:text-[12px] uppercase tracking-[0.35em] font-sans font-bold text-[#676a57]">
             Om Swastyastu
           </span>
-          <div className="w-16 h-0.5 bg-[#eebebc] my-3 rounded-full" />
+          <div className="w-16 h-0.5 bg-[#eebebc] my-2.5 rounded-full" />
         </div>
 
         {/* Small Invitation Tag */}
-        <div className="flex flex-col items-center justify-center mb-4">
-          <span className="text-[#8d8e7c] text-xs font-normal tracking-normal mb-1 opacity-90 antialiased" title="Aksara Bali: Uleman Manusa Yadnya">
+        <div className="flex flex-col items-center justify-center mb-3">
+          <span className="text-[#8d8e7c] text-xs font-normal tracking-normal mb-1 opacity-90 antialiased leading-relaxed" title="Aksara Bali: Uleman Manusa Yadnya">
             ᬉᬮᬾᬫᬦ᭄‌ᬫᬦᬸᬲᬬᬤ᭄ᬜ
           </span>
           <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-bold text-[#8d8e7c]">
@@ -158,32 +159,32 @@ Salam Hormat,
 
         {/* Ceremony Name */}
         <div className="flex flex-col items-center justify-center mb-2">
-          <span className="text-[#8d8e7c] text-lg sm:text-2xl font-normal tracking-wide mb-1 antialiased" title="Aksara Bali: Mepandes">
+          <span className="text-[#8d8e7c] text-lg sm:text-2xl font-normal tracking-wide mb-1 antialiased leading-relaxed" title="Aksara Bali: Mepandes">
             ᬫᬾᬧᬦ᭄ᬤᬾᬲ᭄
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-serif-royal tracking-wider text-center leading-tight uppercase text-[#676a57]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-serif-royal tracking-wide sm:tracking-wider text-center leading-tight uppercase text-[#676a57] break-words">
             MEPANDES
           </h1>
-          <p className="text-xs sm:text-sm md:text-base tracking-[0.25em] font-serif-royal font-bold text-[#8d8e7c] uppercase mt-1.5">
+          <p className="text-xs sm:text-sm md:text-base tracking-[0.2em] sm:tracking-[0.25em] font-serif-royal font-bold text-[#8d8e7c] uppercase mt-1.5">
             KELUARGA DALEM BUWITAN
           </p>
         </div>
         
-        <p className="text-[11px] sm:text-xs tracking-[0.15em] font-serif-elegant italic mb-5 text-center text-[#8d8e7c] font-medium">
+        <p className="text-[11px] sm:text-xs tracking-[0.15em] font-serif-elegant italic mb-4 text-center text-[#8d8e7c] font-medium">
           - Metatah / Potong Gigi -
         </p>
 
         {/* Horizontal Separator */}
-        <div className="flex items-center justify-center gap-3 mb-5">
-          <span className="h-px w-10 bg-[#eebebc]" />
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <span className="h-px w-8 sm:w-10 bg-[#eebebc]" />
           <span className="text-[10px] uppercase tracking-widest font-serif-royal text-[#676a57] font-bold">
             Anggara Pon Kelawu
           </span>
-          <span className="h-px w-10 bg-[#eebebc]" />
+          <span className="h-px w-8 sm:w-10 bg-[#eebebc]" />
         </div>
 
         {/* Event Detail Briefing */}
-        <div className="inline-flex flex-col items-center justify-center rounded-2xl px-5 py-2.5 mb-5 w-full max-w-xs mx-auto border border-[#eebebc] bg-[#fee4e3]/30 text-[#676a57] shadow-2xs">
+        <div className="inline-flex flex-col items-center justify-center rounded-2xl px-4 sm:px-5 py-3 mb-4 w-full max-w-xs mx-auto border border-[#eebebc] bg-[#fee4e3]/30 text-[#676a57] shadow-2xs">
           <div className="flex items-center gap-1.5 text-xs font-bold text-[#676a57]">
             <Calendar className="h-3.5 w-3.5 text-[#676a57]" />
             <span>Selasa, 13 Oktober 2026</span>
@@ -197,7 +198,7 @@ Salam Hormat,
 
         {/* Dynamic Invited Guest Card (Only shown if recipient is specified in URL or set) */}
         {guestRecipient ? (
-          <div className="my-5 p-4 rounded-2xl bg-gradient-to-b from-[#fee4e3]/20 via-white to-[#fee4e3]/20 border-2 border-[#eebebc] shadow-sm max-w-sm mx-auto relative">
+          <div className="my-4 p-4 rounded-2xl bg-gradient-to-b from-[#fee4e3]/20 via-white to-[#fee4e3]/20 border-2 border-[#eebebc] shadow-sm max-w-sm mx-auto relative">
             <p className="text-[10px] uppercase tracking-widest font-mono font-bold text-[#8d8e7c] mb-0.5">
               Undangan Untuk:
             </p>
@@ -205,8 +206,8 @@ Salam Hormat,
               Bapak / Ibu / Saudara / i:
             </p>
             
-            <div className="py-1 px-3 my-1">
-              <h2 className="text-lg sm:text-2xl font-black font-serif-royal text-[#676a57] tracking-wide uppercase">
+            <div className="py-1 px-2 my-1">
+              <h2 className="text-xl sm:text-2xl font-black font-serif-royal text-[#676a57] tracking-wide uppercase break-words">
                 {guestRecipient}
               </h2>
             </div>
@@ -217,14 +218,14 @@ Salam Hormat,
           </div>
         ) : null}
 
-        {/* Open Button */}
-        <div className="pt-2">
+        {/* Open Button with touch-target >= 48px */}
+        <div className="pt-2 flex flex-col items-center justify-center">
           <motion.button
             id="btn-open-invitation"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
             onClick={onOpen}
-            className="relative group inline-flex items-center justify-center px-8 py-3.5 overflow-hidden rounded-full font-bold tracking-widest shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer text-xs text-white bg-[#676a57] border border-[#eebebc]"
+            className="relative group inline-flex items-center justify-center px-8 py-3.5 min-h-[48px] overflow-hidden rounded-full font-bold tracking-widest shadow-md hover:shadow-lg active:brightness-95 transition-all duration-300 cursor-pointer text-xs text-white bg-[#676a57] border border-[#eebebc] touch-manipulation"
           >
             <Mail className="mr-2 h-4 w-4 animate-bounce" />
             BUKA UNDANGAN
@@ -233,16 +234,16 @@ Salam Hormat,
 
         {/* Discreet Host Link Generator trigger (Only visible to host / when in host mode or ?host=true) */}
         {isHostMode && (
-          <div className="mt-6 pt-3 border-t border-[#eebebc]/40">
+          <div className="mt-5 pt-3 border-t border-[#eebebc]/40">
             <button
               type="button"
               onClick={() => {
                 setInputName(guestRecipient || "Ella sekeluarga");
                 setShowModal(true);
               }}
-              className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#8d8e7c] hover:text-[#676a57] transition-colors cursor-pointer py-1 px-3 rounded-full hover:bg-[#fee4e3]/50"
+              className="min-h-[44px] inline-flex items-center justify-center gap-1.5 text-[11px] font-medium text-[#8d8e7c] hover:text-[#676a57] transition-colors cursor-pointer py-2 px-3 rounded-full hover:bg-[#fee4e3]/50 touch-manipulation"
             >
-              <Edit3 className="w-3 h-3" />
+              <Edit3 className="w-3.5 h-3.5" />
               <span>Generator Link Tamu (Khusus Host)</span>
             </button>
           </div>
@@ -264,29 +265,30 @@ Salam Hormat,
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl border-2 border-[#eebebc] text-[#676a57] relative"
+              className="bg-white rounded-3xl p-5 sm:p-6 w-full max-w-md shadow-2xl border-2 border-[#eebebc] text-[#676a57] relative max-h-[90vh] overflow-y-auto"
             >
               <button
                 type="button"
                 onClick={() => setShowModal(false)}
-                className="absolute top-4 right-4 p-1.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors cursor-pointer"
+                className="absolute top-3 right-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 active:bg-gray-300 text-gray-600 transition-colors cursor-pointer touch-manipulation"
+                aria-label="Tutup modal"
               >
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="flex items-center gap-2 mb-3">
-                <Share2 className="w-5 h-5 text-[#676a57]" />
-                <h3 className="text-lg font-bold font-serif-royal text-[#676a57]">
+              <div className="flex items-center gap-2 mb-2 pr-10">
+                <Share2 className="w-5 h-5 text-[#676a57] shrink-0" />
+                <h3 className="text-base sm:text-lg font-bold font-serif-royal text-[#676a57]">
                   Buat Link Undangan Tamu
                 </h3>
               </div>
 
-              <p className="text-xs text-[#8d8e7c] mb-4">
+              <p className="text-xs text-[#8d8e7c] mb-3.5 leading-relaxed">
                 Ketik nama tamu yang diundang di bawah ini untuk membuat link khusus dan pesan WhatsApp otomatis.
               </p>
 
-              {/* Input for Guest Name */}
-              <div className="mb-4">
+              {/* Input for Guest Name - text-base on mobile prevents iOS auto-zoom */}
+              <div className="mb-3.5">
                 <label className="block text-xs font-bold uppercase tracking-wider text-[#676a57] mb-1">
                   Nama Tamu / Penerima:
                 </label>
@@ -298,12 +300,12 @@ Salam Hormat,
                     handleSaveName(e.target.value);
                   }}
                   placeholder="Contoh: Ella sekeluarga"
-                  className="w-full px-4 py-2.5 rounded-xl border-2 border-[#eebebc] focus:border-[#676a57] focus:outline-none text-sm font-semibold text-[#676a57] bg-[#fee4e3]/20"
+                  className="w-full px-4 py-3 min-h-[48px] rounded-xl border-2 border-[#eebebc] focus:border-[#676a57] focus:outline-none text-base sm:text-sm font-semibold text-[#676a57] bg-[#fee4e3]/20"
                 />
               </div>
 
               {/* Generated Link Preview */}
-              <div className="mb-5 p-3 rounded-xl bg-gray-50 border border-gray-200 text-left">
+              <div className="mb-3 p-3 rounded-xl bg-gray-50 border border-gray-200 text-left">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 block mb-1">
                   Link Undangan Tamu:
                 </span>
@@ -312,12 +314,22 @@ Salam Hormat,
                 </p>
               </div>
 
-              {/* Action Buttons */}
+              {/* WhatsApp Message Preview */}
+              <div className="mb-4 text-left">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#676a57] block mb-1">
+                  Pratinjau Pesan WhatsApp:
+                </span>
+                <div className="max-h-32 sm:max-h-36 overflow-y-auto p-3 rounded-xl bg-[#FFFDF9] border border-[#eebebc] text-[11px] text-[#676a57] whitespace-pre-wrap font-sans leading-relaxed select-all">
+                  {getWhatsAppMessage(inputName, currentLink)}
+                </div>
+              </div>
+
+              {/* Action Buttons - 44px min touch target */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <button
                   type="button"
                   onClick={handleCopyLink}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-[#676a57] text-white hover:bg-[#525544] transition-colors cursor-pointer shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 min-h-[44px] rounded-xl text-xs font-bold bg-[#676a57] text-white hover:bg-[#525544] active:scale-98 transition-colors cursor-pointer shadow-sm touch-manipulation"
                 >
                   {copiedLink ? <Check className="w-4 h-4 text-emerald-300" /> : <Copy className="w-4 h-4" />}
                   <span>{copiedLink ? "Link Tersalin!" : "Salin Link"}</span>
@@ -326,18 +338,18 @@ Salam Hormat,
                 <button
                   type="button"
                   onClick={handleShareWhatsApp}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors cursor-pointer shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 min-h-[44px] rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 active:scale-98 transition-colors cursor-pointer shadow-sm touch-manipulation"
                 >
                   <Send className="w-4 h-4" />
                   <span>Kirim WhatsApp</span>
                 </button>
               </div>
 
-              {/* Copy Full WhatsApp Text option */}
+              {/* Copy Full WhatsApp Text option - min 44px touch target */}
               <button
                 type="button"
                 onClick={handleCopyWaText}
-                className="mt-3 w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-[#676a57] bg-[#fee4e3]/50 border border-[#eebebc] hover:bg-[#fee4e3] transition-colors cursor-pointer"
+                className="mt-2.5 w-full inline-flex items-center justify-center gap-2 px-4 py-3 min-h-[44px] rounded-xl text-xs font-semibold text-[#676a57] bg-[#fee4e3]/50 border border-[#eebebc] hover:bg-[#fee4e3] active:scale-98 transition-colors cursor-pointer touch-manipulation"
               >
                 {copiedWaText ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copiedWaText ? "Teks WA Tersalin!" : "Salin Teks Pesan WhatsApp"}</span>

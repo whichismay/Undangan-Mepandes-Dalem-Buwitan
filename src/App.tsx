@@ -59,10 +59,10 @@ const DEFAULT_INVITATION_DATA: InvitationData = {
   event: {
     date: "2026-10-13",
     balineseDate: "Anggara Pon Kelawu",
-    time: "15.00 WITA (03:00 Sore)",
+    time: "12.00 WITA - Selesai",
     venueName: "Dalem Buwitan",
-    address: "Jalan A. Yani Utara, Gang Buwitan, Br. Batur Peguyangan Kaja, Denpasar Utara.",
-    mapsLink: "https://maps.app.goo.gl/hpF6WcKofdxdeSBx8?g_st=ic"
+    address: "Jl. A. Yani Utara, Br. Batur Peguyangan Kaja, Gang Buwitan, Denpasar Utara",
+    mapsLink: "https://maps.app.goo.gl/KwLwqymGeU54EsfF6"
   },
   rsvpList: [],
   theme: "bold-typography" // Set "Bold Typography" design theme as default
@@ -78,9 +78,12 @@ export default function App() {
         return {
           ...parsed,
           rsvpList: [], // Always empty initially until Firestore syncs live wishes
+          initiates: DEFAULT_INVITATION_DATA.initiates,
           event: {
             ...parsed.event,
+            time: DEFAULT_INVITATION_DATA.event.time,
             balineseDate: DEFAULT_INVITATION_DATA.event.balineseDate,
+            address: DEFAULT_INVITATION_DATA.event.address,
             mapsLink: DEFAULT_INVITATION_DATA.event.mapsLink
           }
         };

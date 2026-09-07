@@ -23,7 +23,7 @@ export interface EventDetails {
 export interface RSVP {
   id: string;
   name: string;
-  relationship: string; // "Keluarga" | "Kerabat" | "Teman" | "Semeton"
+  relationship?: string;
   status: "hadir" | "absen"; // Balinese: "Lunga" or "Nenten"
   message: string;
   timestamp: string;

@@ -83,7 +83,7 @@ export default function AudioPlayer({ autoPlayTrigger }: AudioPlayerProps) {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-[999999] flex items-center gap-2.5 select-none pointer-events-auto">
+    <div className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] right-[calc(1.25rem+env(safe-area-inset-right,0px))] z-[999999] flex items-center gap-2.5 select-none pointer-events-auto">
       {/* Native Audio Element playing strictly Putri Cening Ayu */}
       <audio
         ref={audioRef}
@@ -98,7 +98,7 @@ export default function AudioPlayer({ autoPlayTrigger }: AudioPlayerProps) {
       <button
         type="button"
         onClick={togglePlay}
-        className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full bg-stone-900/95 backdrop-blur-md text-amber-200 border border-amber-500/50 text-xs font-semibold shadow-2xl hover:bg-stone-950 transition-all cursor-pointer"
+        className="hidden sm:flex items-center gap-2 px-3.5 py-2 min-h-[44px] rounded-full bg-stone-900/95 backdrop-blur-md text-amber-200 border border-amber-500/50 text-xs font-semibold shadow-2xl hover:bg-stone-950 transition-all cursor-pointer touch-manipulation"
       >
         <span className={`w-2.5 h-2.5 rounded-full ${isPlaying ? "bg-emerald-400 animate-pulse" : "bg-stone-500"}`}></span>
         <span>{isPlaying ? "Musik ON" : "Musik OFF"}</span>
@@ -109,7 +109,7 @@ export default function AudioPlayer({ autoPlayTrigger }: AudioPlayerProps) {
         id="bg-music-toggle"
         type="button"
         onClick={togglePlay}
-        className={`flex h-14 w-14 items-center justify-center rounded-full bg-[#FAB313] text-stone-950 shadow-2xl border-2 border-amber-400 transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none cursor-pointer ${
+        className={`flex h-14 w-14 min-w-[56px] min-h-[56px] items-center justify-center rounded-full bg-[#FAB313] text-stone-950 shadow-2xl border-2 border-amber-400 transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none cursor-pointer touch-manipulation ${
           isPlaying ? "ring-4 ring-amber-400/60 animate-pulse" : "opacity-85 hover:opacity-100"
         }`}
         title={isPlaying ? "Matikan Musik" : "Putar Musik"}

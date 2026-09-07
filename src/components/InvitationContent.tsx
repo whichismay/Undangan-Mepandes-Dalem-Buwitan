@@ -37,7 +37,6 @@ interface InvitationContentProps {
 export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, onClearRSVP }: InvitationContentProps) {
   // RSVP Form States
   const [guestName, setGuestName] = useState(guestRecipient || "");
-  const [relation, setRelation] = useState("Semeton");
   const [status, setStatus] = useState<"hadir" | "absen">("hadir");
   const [message, setMessage] = useState("");
   const [submitError, setSubmitError] = useState("");
@@ -135,7 +134,6 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
     const newRsvp: RSVP = {
       id: Date.now().toString(),
       name: guestName.trim(),
-      relationship: relation,
       status: status,
       message: message.trim() || "Ngastungkaran Rahayu lan Mogi Labda Karya.",
       timestamp: new Date().toISOString()
@@ -158,7 +156,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
   };
 
   return (
-    <div className={`relative w-full min-h-screen px-4 py-12 transition-all duration-700 overflow-hidden ${theme.bg}`}>
+    <div className={`relative w-full min-h-screen px-3.5 sm:px-6 md:px-8 py-8 sm:py-12 transition-all duration-700 overflow-hidden ${theme.bg}`}>
       {/* Thank You Popup Modal upon submitting ucapan & RSVP */}
       {submitSuccess && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm">
@@ -175,7 +173,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
             <button
               type="button"
               onClick={() => setSubmitSuccess(false)}
-              className="w-full py-3 px-6 rounded-xl bg-[#676a57] text-white font-bold text-xs uppercase tracking-widest shadow-md hover:brightness-110 transition-all cursor-pointer"
+              className="w-full py-3.5 px-6 min-h-[48px] rounded-xl bg-[#676a57] text-white font-bold text-xs uppercase tracking-widest shadow-md hover:brightness-110 active:scale-98 transition-all cursor-pointer touch-manipulation"
             >
               Tutup
             </button>
@@ -183,7 +181,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
         </div>
       )}
       
-      <div className="mx-auto max-w-2xl lg:max-w-4xl xl:max-w-5xl space-y-12 sm:space-y-16 relative z-10">
+      <div className="mx-auto max-w-2xl lg:max-w-4xl xl:max-w-5xl space-y-10 sm:space-y-16 relative z-10">
         
         {/* Subtle top separator */}
         <div className="flex flex-col items-center justify-center gap-2 mb-8">
@@ -238,7 +236,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
           transition={{ duration: 0.8 }}
           className="text-center py-2 relative"
         >
-          <div className="text-center mb-6 flex flex-col items-center justify-center">
+          <div className="text-center mb-6 flex flex-col items-center justify-center relative">
             <span className="text-[#8d8e7c] text-sm sm:text-base font-normal mb-1 antialiased" title="Aksara Bali: Sang Pacang Mepandes">
               ᬲᬗ᭄​ᬧᬘᬗ᭄​ᬫᬾᬧᬦ᭄ᬤᬾᬲ᭄
             </span>
@@ -255,12 +253,16 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="p-5 rounded-2xl bg-[#FFFDF9]/80 border border-[#d8c49e] shadow-xs hover:shadow-md transition-all"
+              className="p-5 rounded-2xl bg-[#FFFDF9]/80 border border-[#d8c49e] shadow-xs hover:shadow-md transition-all relative overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#d8c49e]/60">
-                <span className="text-[10px] uppercase font-sans tracking-wider text-[#8d8e7c] font-bold block">
-                  Anak alit saking Bapak I Wayan Sentana Putra, SE.,M.Si & Ibu Ni Ketut Mustini, S.E:
+              <div className="mb-3 pb-2.5 border-b border-[#d8c49e]/60">
+                <span className="text-[10px] uppercase font-sans tracking-wider text-[#8d8e7c] font-bold block mb-1">
+                  Anak alit saking:
                 </span>
+                <div className="text-xs sm:text-[13px] font-serif-royal font-bold text-[#676a57] leading-tight space-y-0.5">
+                  <p>Bapak I Wayan Sentana Putra, SE.,M.Si</p>
+                  <p>Ibu Ni Ketut Mustini, S.E</p>
+                </div>
               </div>
               <div className="space-y-3">
                 <div className="flex flex-col gap-0.5">
@@ -283,12 +285,16 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-5 rounded-2xl bg-[#FFFDF9]/80 border border-[#d8c49e] shadow-xs hover:shadow-md transition-all"
+              className="p-5 rounded-2xl bg-[#FFFDF9]/80 border border-[#d8c49e] shadow-xs hover:shadow-md transition-all relative overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#d8c49e]/60">
-                <span className="text-[10px] uppercase font-sans tracking-wider text-[#8d8e7c] font-bold block">
-                  Anak alit saking Bapak I Made Oka Santiaga, SE.,M.M & Ibu Ni Wayan Sukartini:
+              <div className="mb-3 pb-2.5 border-b border-[#d8c49e]/60">
+                <span className="text-[10px] uppercase font-sans tracking-wider text-[#8d8e7c] font-bold block mb-1">
+                  Anak alit saking:
                 </span>
+                <div className="text-xs sm:text-[13px] font-serif-royal font-bold text-[#676a57] leading-tight space-y-0.5">
+                  <p>Bapak I Made Oka Santiaga, SE.,M.M</p>
+                  <p>Ibu Ni Wayan Sukartini</p>
+                </div>
               </div>
               <div className="space-y-3">
                 <div className="flex flex-col gap-0.5">
@@ -335,12 +341,16 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="p-5 rounded-2xl bg-[#FFFDF9]/80 border border-[#d8c49e] shadow-xs hover:shadow-md transition-all"
+              className="p-5 rounded-2xl bg-[#FFFDF9]/80 border border-[#d8c49e] shadow-xs hover:shadow-md transition-all relative overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#d8c49e]/60">
-                <span className="text-[10px] uppercase font-sans tracking-wider text-[#8d8e7c] font-bold block">
-                  Anak alit saking Bapak I Nyoman Alit Suryamanik, S.H & Ibu Ni Ketut Puspanadi, S.TP:
+              <div className="mb-3 pb-2.5 border-b border-[#d8c49e]/60">
+                <span className="text-[10px] uppercase font-sans tracking-wider text-[#8d8e7c] font-bold block mb-1">
+                  Anak alit saking:
                 </span>
+                <div className="text-xs sm:text-[13px] font-serif-royal font-bold text-[#676a57] leading-tight space-y-0.5">
+                  <p>Bapak I Nyoman Alit Suryamanik, S.H</p>
+                  <p>Ibu Ni Ketut Puspanadi, S.TP</p>
+                </div>
               </div>
               <div className="space-y-3">
                 <div className="flex flex-col gap-0.5">
@@ -395,7 +405,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
           transition={{ duration: 0.8 }}
           className="py-2 relative"
         >
-          <div className="text-center mb-8 flex flex-col items-center justify-center">
+          <div className="text-center mb-8 flex flex-col items-center justify-center relative">
             <span className="text-[#8d8e7c] text-sm sm:text-base font-normal mb-1 antialiased" title="Aksara Bali: Dresta Parikrama">
               ᬤ᭄ᬭᬾᬲ᭄ᬢ​ᬧᬭᬶᬓ᭄ᬭᬫ
             </span>
@@ -442,7 +452,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                       Resepsi Mepandes
                     </p>
                     <p className="text-base sm:text-lg font-black font-serif-royal text-[#676a57] tracking-wider mt-1">
-                      15.00 WITA – Selesai
+                      12.00 WITA – Selesai
                     </p>
                   </div>
                 </div>
@@ -505,7 +515,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
           transition={{ duration: 0.8 }}
           className="py-2 relative space-y-4 max-w-md mx-auto"
         >
-          <div className="text-center flex flex-col items-center justify-center">
+          <div className="text-center flex flex-col items-center justify-center relative">
             <span className="text-[#8d8e7c] text-sm sm:text-base font-normal mb-1 antialiased" title="Aksara Bali: Panyingakan Genah">
               ᬧᬜᬶᬗᬓᬦ᭄​ᬕᬾᬦᬄ
             </span>
@@ -539,7 +549,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
               target="_blank"
               rel="noopener noreferrer"
               referrerPolicy="no-referrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#c5a059] via-[#b89855] to-[#9e7d3b] font-serif-royal font-bold text-xs text-white shadow-md hover:brightness-105 active:scale-98 transition-all duration-300 cursor-pointer border border-[#d8c49e] tracking-wider uppercase mt-1"
+              className="inline-flex items-center gap-2 px-6 py-3.5 min-h-[48px] rounded-full bg-gradient-to-r from-[#c5a059] via-[#b89855] to-[#9e7d3b] font-serif-royal font-bold text-xs text-white shadow-md hover:brightness-105 active:scale-98 transition-all duration-300 cursor-pointer border border-[#d8c49e] tracking-wider uppercase mt-1 touch-manipulation"
             >
               <Map className="h-4 w-4 text-amber-100" />
               <span>BUKA GOOGLE MAPS</span>
@@ -567,13 +577,13 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
             <h2 className={`text-2xl sm:text-3xl font-extrabold font-serif-royal ${theme.title} mt-1`}>
               UCAPAN & KONFIRMASI KEHADIRAN
             </h2>
-            <p className="text-xs text-[#8d8e7c] italic max-w-sm mx-auto mt-2 font-serif-elegant font-medium">
-              Nunas pangastawa lan kerawuhan semeton sami
+            <p className="text-xs sm:text-sm text-[#8d8e7c] italic max-w-sm mx-auto mt-2 font-serif-elegant font-medium leading-relaxed">
+              Doa restu dan kehadiran Bapak/Ibu/Saudara/i sangat kami harapkan
             </p>
           </div>
 
           {/* RSVP Form Card (Highlighted) */}
-          <form onSubmit={handleRsvpSubmit} className="space-y-4 max-w-lg mx-auto mb-8 p-6 sm:p-8 rounded-3xl bg-[#FFFDF9]/90 border border-[#d8c49e] shadow-xs relative z-10">
+          <form onSubmit={handleRsvpSubmit} className="space-y-4 max-w-lg mx-auto mb-8 p-5 sm:p-8 rounded-3xl bg-[#FFFDF9]/90 border border-[#d8c49e] shadow-xs relative z-10">
             {submitError && (
               <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
@@ -597,7 +607,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                   <button
                     type="button"
                     onClick={() => setGuestName(guestRecipient)}
-                    className="text-[10px] text-[#676a57] font-bold underline hover:text-[#525545] cursor-pointer"
+                    className="min-h-[44px] inline-flex items-center text-xs text-[#676a57] font-bold underline hover:text-[#525545] cursor-pointer touch-manipulation"
                   >
                     Gunakan: &ldquo;{guestRecipient}&rdquo;
                   </button>
@@ -608,55 +618,38 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                 value={guestName}
                 onChange={(e) => setGuestName(e.target.value)}
                 placeholder="Contoh: Ella"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#d8c49e] bg-white text-sm font-semibold text-[#676a57] focus:outline-none focus:ring-2 focus:ring-[#d8c49e]"
+                className="w-full px-4 py-3 min-h-[48px] rounded-xl border border-[#d8c49e] bg-white text-base sm:text-sm font-semibold text-[#676a57] focus:outline-none focus:ring-2 focus:ring-[#d8c49e]"
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-bold text-[#676a57] uppercase tracking-wider mb-1">
-                  Pasemetonan:
-                </label>
-                <select
-                  value={relation}
-                  onChange={(e) => setRelation(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-[#d8c49e] bg-white text-xs font-semibold text-[#676a57] focus:outline-none focus:ring-2 focus:ring-[#d8c49e]"
+            {/* Konfirmasi Kehadiran */}
+            <div>
+              <label className="block text-xs font-bold text-[#676a57] uppercase tracking-wider mb-1.5">
+                Konfirmasi Kehadiran:
+              </label>
+              <div className="grid grid-cols-2 gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setStatus("hadir")}
+                  className={`min-h-[48px] py-2.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer border flex items-center justify-center touch-manipulation active:scale-98 ${
+                    status === "hadir"
+                      ? "bg-[#676a57] text-white border-[#676a57] shadow-xs"
+                      : "bg-white text-[#676a57] border-[#d8c49e] hover:bg-[#f8f4ea]"
+                  }`}
                 >
-                  <option value="Semeton / Keluarga">Semeton / Keluarga</option>
-                  <option value="Kerabat / Sahabat">Kerabat / Sahabat</option>
-                  <option value="Rekana / Teman">Rekana / Teman</option>
-                  <option value="Tamu Undangan">Tamu Undangan</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-[#676a57] uppercase tracking-wider mb-1">
-                  Konfirmasi Kehadiran:
-                </label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setStatus("hadir")}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
-                      status === "hadir"
-                        ? "bg-[#676a57] text-white border-[#676a57] shadow-xs"
-                        : "bg-white text-[#676a57] border-[#d8c49e] hover:bg-[#f8f4ea]"
-                    }`}
-                  >
-                    Hadir
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setStatus("absen")}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
-                      status === "absen"
-                        ? "bg-rose-700 text-white border-rose-700 shadow-xs"
-                        : "bg-white text-[#676a57] border-[#d8c49e] hover:bg-[#f8f4ea]"
-                    }`}
-                  >
-                    Tidak Hadir
-                  </button>
-                </div>
+                  Hadir
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setStatus("absen")}
+                  className={`min-h-[48px] py-2.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer border flex items-center justify-center touch-manipulation active:scale-98 ${
+                    status === "absen"
+                      ? "bg-rose-700 text-white border-rose-700 shadow-xs"
+                      : "bg-white text-[#676a57] border-[#d8c49e] hover:bg-[#f8f4ea]"
+                  }`}
+                >
+                  Tidak Hadir
+                </button>
               </div>
             </div>
 
@@ -673,7 +666,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                 )}
               </div>
 
-              {/* Main Custom Input Field */}
+              {/* Main Custom Input Field - 16px font size on mobile to prevent iOS zoom */}
               <textarea
                 rows={3}
                 value={message}
@@ -682,7 +675,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                   setSelectedTemplate(null);
                 }}
                 placeholder="Ketik ucapan & doa di sini..."
-                className="w-full px-4 py-3 rounded-xl border-2 border-[#d8c49e] bg-white text-xs font-semibold text-[#676a57] focus:outline-none focus:ring-2 focus:ring-[#676a57]/30 shadow-xs"
+                className="w-full px-4 py-3 min-h-[96px] rounded-xl border-2 border-[#d8c49e] bg-white text-base sm:text-xs font-semibold text-[#676a57] focus:outline-none focus:ring-2 focus:ring-[#676a57]/30 shadow-xs"
               />
 
               {message && (
@@ -690,15 +683,15 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                   <button
                     type="button"
                     onClick={() => handleCopyTemplate(message)}
-                    className="text-[10px] text-[#676a57] font-semibold hover:underline flex items-center gap-1 cursor-pointer"
+                    className="min-h-[40px] px-2 py-1 text-xs text-[#676a57] font-semibold hover:underline inline-flex items-center gap-1 cursor-pointer touch-manipulation"
                   >
-                    <Copy className="w-3 h-3" /> Salin Ucapan
+                    <Copy className="w-3.5 h-3.5" /> Salin Ucapan
                   </button>
                 </div>
               )}
 
               {/* Optional Template Selection Buttons Below Textarea */}
-              <div className="mt-3 p-3 rounded-xl bg-white/90 border border-[#d8c49e] space-y-2">
+              <div className="mt-3 p-3 sm:p-3.5 rounded-xl bg-white/90 border border-[#d8c49e] space-y-2">
                 <div className="flex items-center justify-between">
                   <p className="text-[11px] font-bold text-[#676a57] uppercase tracking-wide">
                     Atau Pilih Template Ucapan (Opsional):
@@ -711,7 +704,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                       key={tpl.id}
                       type="button"
                       onClick={() => handleApplyTemplate(tpl.id)}
-                      className={`text-left p-2.5 rounded-xl border text-xs transition-all cursor-pointer flex flex-col gap-1 ${
+                      className={`text-left p-3 min-h-[44px] rounded-xl border text-xs transition-all cursor-pointer flex flex-col gap-1 active:scale-[0.99] touch-manipulation ${
                         selectedTemplate === tpl.id
                           ? "bg-[#676a57] text-white border-[#676a57] font-semibold shadow-xs"
                           : "bg-[#f8f4ea] text-[#676a57] border-[#d8c49e] hover:bg-[#f2ebda]"
@@ -725,7 +718,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                           {selectedTemplate === tpl.id ? "Terpasang" : "Gunakan"}
                         </span>
                       </div>
-                      <span className="text-[11px] opacity-90 italic">&ldquo;{tpl.text}&rdquo;</span>
+                      <span className="text-[11px] opacity-90 italic leading-relaxed">&ldquo;{tpl.text}&rdquo;</span>
                     </button>
                   ))}
                 </div>
@@ -735,7 +728,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 px-6 rounded-xl bg-[#676a57] text-white font-bold text-xs uppercase tracking-widest border border-[#d8c49e] shadow-md hover:brightness-110 active:scale-98 disabled:opacity-70 transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-6 min-h-[50px] rounded-xl bg-[#676a57] text-white font-bold text-xs uppercase tracking-widest border border-[#d8c49e] shadow-md hover:brightness-110 active:scale-98 disabled:opacity-70 transition-all cursor-pointer flex items-center justify-center gap-2 touch-manipulation"
             >
               <Send className={`w-4 h-4 ${isSubmitting ? "animate-spin" : ""}`} />
               <span>{isSubmitting ? "Mengirim Ucapan..." : "Kirim Konfirmasi & Ucapan"}</span>
@@ -793,14 +786,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between gap-2 mb-1">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="text-xs font-bold text-[#676a57] truncate">{item.name}</span>
-                              {item.relationship && (
-                                <span className="text-[9px] px-1.5 py-0.2 rounded bg-[#f5eedc] text-[#8c6c2e] font-semibold border border-[#d8c49e]/50">
-                                  {item.relationship}
-                                </span>
-                              )}
-                            </div>
+                            <span className="text-xs font-bold text-[#676a57] truncate">{item.name}</span>
                             <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-full shrink-0 ${
                               item.status === "hadir"
                                 ? "bg-[#f5eedc] text-[#8c6c2e] border border-[#d8c49e]/60"
