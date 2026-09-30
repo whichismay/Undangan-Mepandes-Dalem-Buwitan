@@ -36,7 +36,7 @@ interface InvitationContentProps {
 
 export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, onClearRSVP }: InvitationContentProps) {
   // RSVP Form States
-  const [guestName, setGuestName] = useState(guestRecipient || "");
+  const [guestName, setGuestName] = useState("");
   const [status, setStatus] = useState<"hadir" | "absen">("hadir");
   const [message, setMessage] = useState("");
   const [submitError, setSubmitError] = useState("");
@@ -70,13 +70,6 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
     setCopiedTemplate(true);
     setTimeout(() => setCopiedTemplate(false), 2000);
   };
-
-  // Sync guest name when recipient changes
-  useEffect(() => {
-    if (guestRecipient) {
-      setGuestName(guestRecipient);
-    }
-  }, [guestRecipient]);
 
   const theme = {
     bg: "bg-gradient-to-b from-[#FAF8F5] via-[#F6F3EB] to-[#FAF8F5] text-[#676a57]",
@@ -599,27 +592,52 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
             )}
 
             <div>
-              <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-bold text-[#676a57] uppercase tracking-wider">
-                  Pesengan / Nama Tamu:
-                </label>
-                {guestRecipient && guestName !== guestRecipient && (
-                  <button
-                    type="button"
-                    onClick={() => setGuestName(guestRecipient)}
-                    className="min-h-[44px] inline-flex items-center text-xs text-[#676a57] font-bold underline hover:text-[#525545] cursor-pointer touch-manipulation"
-                  >
-                    Gunakan: &ldquo;{guestRecipient}&rdquo;
-                  </button>
-                )}
-              </div>
+              <label className="block text-xs font-bold text-[#676a57] uppercase tracking-wider mb-1.5">
+                Pesengan / Nama Tamu:
+              </label>
               <input
                 type="text"
                 value={guestName}
                 onChange={(e) => setGuestName(e.target.value)}
-                placeholder="Contoh: Ella"
-                className="w-full px-4 py-3 min-h-[48px] rounded-xl border border-[#d8c49e] bg-white text-base sm:text-sm font-semibold text-[#676a57] focus:outline-none focus:ring-2 focus:ring-[#d8c49e]"
+                placeholder="Ketik nama Anda di sini..."
+                className="w-full px-4 py-3 min-h-[48px] rounded-xl border-2 border-[#d8c49e] bg-white text-base sm:text-sm font-semibold text-[#676a57] placeholder:text-[#9ea08f] placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-[#676a57]/30 shadow-xs"
               />
+
+              {/* Saran Nama (jika ada nama di link undangan) */}
+              {guestRecipient && (
+                <div className="mt-2.5 p-3 rounded-xl bg-white/90 border border-[#d8c49e] space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <p className="text-[11px] font-bold text-[#676a57] uppercase tracking-wide">
+                      Saran Nama:
+                    </p>
+                    <span className="text-[10px] text-[#8d8e7c] italic">Klik untuk gunakan</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setGuestName(guestRecipient)}
+                    className={`w-full text-left p-2.5 min-h-[44px] rounded-xl border text-xs transition-all cursor-pointer flex items-center justify-between active:scale-[0.99] touch-manipulation ${
+                      guestName.trim().toLowerCase() === guestRecipient.trim().toLowerCase()
+                        ? "bg-[#676a57] text-white border-[#676a57] font-semibold shadow-xs"
+                        : "bg-[#f8f4ea] text-[#676a57] border-[#d8c49e] hover:bg-[#f2ebda]"
+                    }`}
+                  >
+                    <span className="font-semibold truncate pr-2">
+                      &ldquo;{guestRecipient}&rdquo;
+                    </span>
+                    <span
+                      className={`text-[10px] px-2.5 py-1 rounded-full font-bold shrink-0 transition-colors ${
+                        guestName.trim().toLowerCase() === guestRecipient.trim().toLowerCase()
+                          ? "bg-white text-[#676a57]"
+                          : "bg-[#d8c49e]/50 text-[#676a57]"
+                      }`}
+                    >
+                      {guestName.trim().toLowerCase() === guestRecipient.trim().toLowerCase()
+                        ? "Terpasang"
+                        : "Gunakan"}
+                    </span>
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Konfirmasi Kehadiran */}
