@@ -59,7 +59,7 @@ const DEFAULT_INVITATION_DATA: InvitationData = {
   event: {
     date: "2026-10-13",
     balineseDate: "Anggara Pon Kelawu",
-    time: "12.00 WITA - Selesai",
+    time: "12.00 WITA - MALAM",
     venueName: "Dalem Buwitan",
     address: "Jl. A. Yani Utara, Br. Batur Peguyangan Kaja, Gang Buwitan, Denpasar Utara",
     mapsLink: "https://maps.app.goo.gl/KwLwqymGeU54EsfF6"

@@ -445,7 +445,7 @@ export default function InvitationContent({ data, guestRecipient, onUpdateRSVP, 
                       Resepsi Mepandes
                     </p>
                     <p className="text-base sm:text-lg font-black font-serif-royal text-[#676a57] tracking-wider mt-1">
-                      12.00 WITA – Selesai
+                      12.00 WITA – MALAM
                     </p>
                   </div>
                 </div>

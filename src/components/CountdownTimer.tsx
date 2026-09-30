@@ -94,7 +94,7 @@ export default function CountdownTimer({
           Selasa, 13 Oktober 2026
         </h3>
         <p className="text-xs text-[#705828] font-medium italic mt-1">
-          Anggara Pon Kelawu • 12.00 WITA
+          Anggara Pon Kelawu • 12.00 WITA - MALAM
         </p>
       </div>
 

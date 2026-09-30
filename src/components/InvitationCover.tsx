@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Mail, Calendar, MapPin, Edit3, Share2, Copy, Check, X, Send } from "lucide-react";
+import { Mail, Calendar, MapPin, Edit3, Share2, Copy, Check, X, Send, Instagram } from "lucide-react";
 import { InvitationData } from "../types";
 import { BalineseDivider, BalineseMeruSilhouette } from "./BalineseOrnaments";
 
@@ -21,6 +21,7 @@ export default function InvitationCover({
   const [inputName, setInputName] = useState(guestRecipient);
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedWaText, setCopiedWaText] = useState(false);
+  const [copiedIgText, setCopiedIgText] = useState(false);
 
   // Check if current user is host (e.g. ?host=true or opened without ?to= guest parameter)
   const [isHostMode, setIsHostMode] = useState<boolean>(() => {
@@ -83,7 +84,7 @@ Kepada Yth.
 Tanpa mengurangi rasa hormat, atas asung kertha wara nugraha Ida Sang Hyang Widhi Wasa, perkenankan kami mengundang Bapak/Ibu/Saudara/i, kerabat, serta sahabat terkasih untuk menghadiri Upacara Manusa Yadnya Mepandes (Potong Gigi) kami, yang astungkara akan dilaksanakan pada:
 
 📅 *Selasa, 13 Oktober 2026*
-⏰ *12.00 WITA - Selesai*
+⏰ *12.00 WITA - MALAM*
 📍 *Jl. A. Yani Utara, Br. Batur Peguyangan Kaja, Gang Buwitan, Denpasar Utara*
 🗺️ *Google Maps:* https://maps.app.goo.gl/KwLwqymGeU54EsfF6
 
@@ -112,6 +113,35 @@ Salam Hormat,
     navigator.clipboard.writeText(message);
     setCopiedWaText(true);
     setTimeout(() => setCopiedWaText(false), 2500);
+  };
+
+  const getInstagramMessage = (name: string, link: string) => {
+    const recipientName = name.trim() || "Bapak/Ibu/Saudara/i";
+    return `Om Swastyastu.
+
+Kepada Yth. ${recipientName},
+
+Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri Upacara Manusa Yadnya Mepandes kami pada:
+
+Hari/Tanggal: Selasa, 13 Oktober 2026
+Waktu: 12.00 WITA – Malam
+Tempat: Dalem Buwitan, Gang Buwitan, Jl. A. Yani Utara, Peguyangan Kaja, Denpasar
+
+Detail acara dan lokasi dapat diakses melalui tautan berikut:
+${link}
+
+Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu. Terima kasih.
+
+Om Shanti, Shanti, Shanti Om.
+
+Keluarga Besar Dalem Buwitan`;
+  };
+
+  const handleCopyIgText = () => {
+    const message = getInstagramMessage(inputName, currentLink);
+    navigator.clipboard.writeText(message);
+    setCopiedIgText(true);
+    setTimeout(() => setCopiedIgText(false), 2500);
   };
 
   return (
@@ -345,15 +375,26 @@ Salam Hormat,
                 </button>
               </div>
 
-              {/* Copy Full WhatsApp Text option - min 44px touch target */}
-              <button
-                type="button"
-                onClick={handleCopyWaText}
-                className="mt-2.5 w-full inline-flex items-center justify-center gap-2 px-4 py-3 min-h-[44px] rounded-xl text-xs font-semibold text-[#676a57] bg-[#fee4e3]/50 border border-[#eebebc] hover:bg-[#fee4e3] active:scale-98 transition-colors cursor-pointer touch-manipulation"
-              >
-                {copiedWaText ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedWaText ? "Teks WA Tersalin!" : "Salin Teks Pesan WhatsApp"}</span>
-              </button>
+              {/* Copy WhatsApp & Instagram text options - min 44px touch target */}
+              <div className="mt-2.5 flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyWaText}
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 min-h-[44px] rounded-xl text-xs font-semibold text-[#676a57] bg-[#fee4e3]/50 border border-[#eebebc] hover:bg-[#fee4e3] active:scale-98 transition-colors cursor-pointer touch-manipulation"
+                >
+                  {copiedWaText ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{copiedWaText ? "Teks WA Tersalin!" : "Salin Teks Pesan WhatsApp"}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleCopyIgText}
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 min-h-[44px] rounded-xl text-xs font-semibold text-[#8a3ab9] bg-[#fdf2f8] border border-[#f472b6]/40 hover:bg-[#fce7f3] active:scale-98 transition-colors cursor-pointer touch-manipulation"
+                >
+                  {copiedIgText ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Instagram className="w-3.5 h-3.5" />}
+                  <span>{copiedIgText ? "Pesan Instagram Tersalin!" : "Salin Pesan untuk Instagram (DM)"}</span>
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         )}
